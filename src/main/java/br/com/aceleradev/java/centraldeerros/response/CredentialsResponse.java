@@ -1,9 +1,21 @@
 package br.com.aceleradev.java.centraldeerros.response;
 
+import java.io.Serializable;
 
-public class CredentialsResponse {
+import javax.validation.constraints.NotNull;
 
-  //adicionar serialversionuuid
+import lombok.Data;
 
-  //adicionar validacao notnull de email e password e mensagem de erro
+@Data
+public class CredentialsResponse implements Serializable {
+
+  private static final long serialVersionUID = 4238499095845869671L;
+
+  @NotNull(message = "Please input an username")
+  private String username;
+  @NotNull(message = "Please input a password")
+  private String password;
+
+
+
 }
