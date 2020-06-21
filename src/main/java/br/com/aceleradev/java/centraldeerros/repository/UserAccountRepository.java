@@ -1,15 +1,21 @@
 package br.com.aceleradev.java.centraldeerros.repository;
 
+import br.com.aceleradev.java.centraldeerros.entity.UserAccount;
 
-public class UserAccountRepository {
+import java.util.Optional;
 
-  //impl findbyid
+import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-  //query na tabela useraccount pelo email
+@Repository
+public interface UserAccountRepository extends JpaRepository<UserAccount, Long> {
 
-  //impl findbyemail
+  Optional<UserAccount> findById(Long id);
 
-  //impl find by username
+  @Query("select a from UserAccount a where a.email= ?1")
+  Optional<UserAccount> findByEmail(String email);
+  Optional<UserAccount> findByUsername(String username);
 
 
 }
