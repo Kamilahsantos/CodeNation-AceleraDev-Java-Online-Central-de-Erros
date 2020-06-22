@@ -21,42 +21,41 @@ import lombok.AllArgsConstructor;
 @Service
 public class ServiceEventService {
 
+  private ServiceEventMapper serviceEventMapper;
+
   @Autowired
   ServiceEventRepository serviceEventRepository;
 
-  private ServiceEventMapper serviceEventMapper;
 
-
-  public void deleteServiceEvent(Long id){
-    ServiceEvent serviceEvent = serviceEventRepository.findById(id).orElseThrow(()-> new ObjectNotFoundException(
-      " Service Event not found.",ServiceEvent.class.getName()));
-    serviceEventRepository.deleteById(serviceEvent.getId());
+  public Page<ServiceEventDTO> findAll(Specification<ServiceEvent> spec, Pageable pageable){
+    findAllEventstoPage();
+    return serviceEventRepository.findAll(spec, pageable);
   }
 
-  public ServiceEvent updateServiceEvent (ServiceEventDTO serviceEventDTO, Long id){
-    ServiceEvent serviceEvent = serviceEventRepository.findById(id).orElseThrow(()-> new ObjectNotFoundException(
-      "Service Event not found.",ServiceEvent.class.getName()));
-    return serviceEventRepository.save(serviceEventMapper.updateEvent(serviceEventDTO, serviceEvent));
-  }
-
-  public ServiceEventDTO findById(Long id) {
-    return serviceEventMapper.map(serviceEventRepository.findById(id).orElseThrow(()-> new ObjectNotFoundException(
-      "Service Event not found.",ServiceEvent.class.getName())));
+  public void findAllEventstoPage(){
+    List<ServiceEvent> events = serviceEventRepository.findAll();
+    serviceEventMapper.toList(events);
   }
 
   public ServiceEvent save(ServiceEvent serviceEvent) {
     return serviceEventRepository.save(serviceEvent);
   }
 
-  public void findAllServiceEventsPage(){
-    List<ServiceEvent> serviceEvents = serviceEventRepository.findAll();
-    serviceEventMapper.toList(serviceEvents);
+  public ServiceEventDTO findById(Long id) {
+    return serviceEventMapper.map(serviceEventRepository.findById(id).orElseThrow(()-> new ObjectNotFoundException(
+      "Event not found.",ServiceEvent.class.getName())));
   }
 
-  public Page<ServiceEventDTO> findAll(Specification<ServiceEvent> spec, Pageable pageable){
-    findAllServiceEventsPage();
-    return serviceEventRepository.findAll(spec, pageable);
+  public ServiceEvent updateEvent (ServiceEventDTO eventDTO, Long id){
+    ServiceEvent serviceEvent = serviceEventRepository.findById(id).orElseThrow(()-> new ObjectNotFoundException(
+      "Event not found.",ServiceEvent.class.getName()));
+    return serviceEventRepository.save(serviceEventMapper.updateEvent(eventDTO, serviceEvent));
   }
 
+  public void deleteEvent(Long id){
+    ServiceEvent event = serviceEventRepository.findById(id).orElseThrow(()-> new ObjectNotFoundException(
+      "Event not found.",ServiceEvent.class.getName()));
+    serviceEventRepository.deleteById(event.getId());
+  }
 
 }
