@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class TokenAuthenticationResponse implements Serializable{
 
-  private static final long serialVersionUID = 8271473625181457022L;
+  private static final long serialVersionUID = 7531907022163682850L;
 
   private String token;
 

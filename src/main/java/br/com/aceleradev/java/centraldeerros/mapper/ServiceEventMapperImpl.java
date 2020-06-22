@@ -40,6 +40,7 @@ public class ServiceEventMapperImpl implements  ServiceEventMapper{
       .collect(Collectors.toList());
   }
 
+
   @Override
   public ServiceEvent updateEvent(ServiceEventDTO serviceEventDTO, @MappingTarget ServiceEvent serviceEvent) {
     if(serviceEventDTO == null) return null;

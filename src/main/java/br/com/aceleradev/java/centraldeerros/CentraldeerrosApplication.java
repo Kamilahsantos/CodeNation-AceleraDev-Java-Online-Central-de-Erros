@@ -8,6 +8,8 @@ public class CentraldeerrosApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CentraldeerrosApplication.class, args);
-	}
+    System.out.println("central de erros rodando");
+
+  }
 
 }

@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class CredentialsResponse implements Serializable {
 
-  private static final long serialVersionUID = 4238499095845869671L;
+  private static final long serialVersionUID = -8390065503151126865L;
 
   @NotNull(message = "Please input an username")
   private String username;
