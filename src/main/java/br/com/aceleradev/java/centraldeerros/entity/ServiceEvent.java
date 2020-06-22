@@ -29,7 +29,7 @@ public class ServiceEvent {
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private long id;
 
-  @Column(name = "level", length = 30)
+  @Column(name = "level", length = 30, nullable = false)
   @NotNull(message = "Please input a level")
   @Enumerated(EnumType.STRING)
   private Levels levels;

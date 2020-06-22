@@ -21,10 +21,11 @@ public class SwaggerConfig {
     return new Docket(DocumentationType.SWAGGER_2)
       .select()
       .apis(RequestHandlerSelectors.basePackage("br.com.aceleradev.java.centraldeerros.controller"))
-      .paths(PathSelectors.any())
+      .paths(PathSelectors.ant("api/event/*"))
       .build()
-      .useDefaultResponseMessages(true)
+      .useDefaultResponseMessages(false)
       .apiInfo(apiInfo());
+
   }
 
   private ApiInfo apiInfo(){
@@ -35,7 +36,7 @@ public class SwaggerConfig {
       .version("1.0.0")
       .license("Apache License Version 2.0")
       .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
-      .contact(new Contact("Github", "https://github.com/Kamilahsantos/CodeNation-AceleraDev-Java-Online-Central-de-Erros",null))
+      .contact(new Contact("Squad1", "https://github.com/Kamilahsantos/CodeNation-AceleraDev-Java-Online-Central-de-Erros",null))
       .build();
 
   }

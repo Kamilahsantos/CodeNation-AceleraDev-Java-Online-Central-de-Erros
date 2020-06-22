@@ -8,9 +8,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.Jwts;
 
 public class TokenAuthenticationService {
-  private static final String SECRET = "2980d62e-923a-4e07-bb6f-7e476079b2fe";
+  private static final String SECRET = "";
   private static final long EXPIRATION_TIME = 86400000;
-  private static final String TOKEN_TYPE = "Bearer ";
+  private static final String TOKEN_PREFIX = "Bearer ";
 
   public static String create(String username) {
     return Jwts.builder().setSubject(username).setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
@@ -18,11 +18,11 @@ public class TokenAuthenticationService {
   }
 
   static boolean hasJwtToken(String token) {
-    return (!StringUtils.isEmpty(token) && token.startsWith(TOKEN_TYPE));
+    return (!StringUtils.isEmpty(token) && token.startsWith(TOKEN_PREFIX));
   }
 
   static String validateToken(String token) {
-    return Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token.replace(TOKEN_TYPE, "")).getBody()
+    return Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token.replace(TOKEN_PREFIX, "")).getBody()
       .getSubject();
   }
 

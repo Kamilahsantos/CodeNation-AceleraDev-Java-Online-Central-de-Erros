@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 @Data
 @Entity
-@Table(name="account")
+@Table(name="useraccount")
 @EntityListeners(AuditingEntityListener.class)
 public class UserAccount {
 

@@ -29,6 +29,6 @@ public interface ServiceEventMapper {
 
   List<ServiceEventDTO> toList(List<ServiceEvent> serviceEventList);
 
-
   ServiceEvent updateEvent(ServiceEventDTO serviceEventDTO, @MappingTarget ServiceEvent serviceEvent);
+
 }
