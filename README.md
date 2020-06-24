@@ -29,3 +29,25 @@ Abaixo estão os requisitos desta API, o time terá total liberdade para tomar a
 * Deve suportar Ordenação por diferentes tipos de atributos
 * A consulta de listagem não deve retornar os LOGs dos Eventos
 * Deve permitir a busca de um evento por um ID, dessa maneira exibindo o LOG desse evento em específico
+
+### Stack Utilizada
+* Java 8
+* Spring Boot
+* Spring Data Jpa
+* H2 database
+* Postgresql
+* Spring Security
+* JWT
+* Spring Fox
+* Lombok
+* Swagger Ui
+* Junit
+* Heroku
+
+### Aplicação
+
+[Aplicação no heroku](https://api-central-de-erros-demo.herokuapp.com/)
+
+[Swagger do projeto](https://api-central-de-erros-demo.herokuapp.com/swagger-ui.html)
+
+[Vídeo apresentação demo](https://www.youtube.com/watch?v=nBvaAG6EMWw)
